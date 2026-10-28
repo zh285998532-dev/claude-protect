@@ -1,0 +1,10 @@
+#!/usr/bin/python3 -I
+import sys
+sys.path.insert(0, "/usr/local/lib/claude-protect")
+from claude_protect.browser import main
+try:
+    main()
+except (RuntimeError, ValueError, OSError):
+    # URLs can contain transient OAuth codes; never echo a URL or argv in an error.
+    print("Claude Protect: protected browser/callback could not open; check the installed guide and browser prerequisites.", file=sys.stderr)
+    raise SystemExit(1)

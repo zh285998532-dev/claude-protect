@@ -1,0 +1,9 @@
+#!/usr/bin/python3 -I
+import sys
+sys.path.insert(0, "/usr/local/lib/claude-protect")
+from claude_protect.upstream import main
+try:
+    main()
+except (RuntimeError, ValueError, OSError):
+    print("Claude Protect: managed upstream could not start; inspect configuration and service permissions.", file=sys.stderr)
+    raise SystemExit(1)

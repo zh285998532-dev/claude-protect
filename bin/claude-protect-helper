@@ -1,0 +1,9 @@
+#!/usr/bin/python3 -I
+import sys
+sys.path.insert(0, "/usr/local/lib/claude-protect")
+from claude_protect.helper import main
+try:
+    main()
+except (RuntimeError, ValueError, OSError) as error:
+    print(f"Claude Protect: {error}", file=sys.stderr)
+    raise SystemExit(1)

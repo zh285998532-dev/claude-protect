@@ -1,0 +1,5 @@
+#!/usr/bin/python3 -I
+import sys
+sys.path.insert(0, "/usr/local/lib/claude-protect")
+from claude_protect.relay import main
+main()

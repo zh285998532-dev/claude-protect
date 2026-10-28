@@ -1,0 +1,9 @@
+#!/usr/bin/python3 -I
+import sys
+sys.path.insert(0, "/usr/local/lib/claude-protect")
+from claude_protect.session import main
+try:
+    main()
+except (RuntimeError, ValueError, OSError):
+    print("Claude Protect: application startup blocked; verify isolation and unlock the desktop keyring. No insecure fallback was requested.", file=sys.stderr)
+    raise SystemExit(1)

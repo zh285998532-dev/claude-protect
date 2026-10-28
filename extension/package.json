@@ -1,0 +1,28 @@
+{
+  "name": "claude-protect",
+  "displayName": "Claude Protect",
+  "description": "Ubuntu Claude Code 网络隔离状态、受保护 VS Code 与浏览器启动入口",
+  "version": "0.6.0",
+  "publisher": "claude-protect-local",
+  "license": "MIT",
+  "engines": { "vscode": "^1.94.0" },
+  "categories": ["Other"],
+  "main": "./extension.js",
+  "extensionKind": ["ui"],
+  "activationEvents": ["onStartupFinished"],
+  "capabilities": {
+    "untrustedWorkspaces": { "supported": "limited", "description": "只读状态可用；启动与联网测试要求信任工作区。" },
+    "virtualWorkspaces": { "supported": false }
+  },
+  "contributes": {
+    "commands": [
+      { "command": "claudeProtect.status", "title": "Claude Protect: 查看隔离状态" },
+      { "command": "claudeProtect.launch", "title": "Claude Protect: 打开受保护窗口" },
+      { "command": "claudeProtect.browser", "title": "Claude Protect: 打开受保护浏览器" },
+      { "command": "claudeProtect.keyring", "title": "Claude Protect: 检查密钥链通道" },
+      { "command": "claudeProtect.probe", "title": "Claude Protect: 运行联网验证" },
+      { "command": "claudeProtect.guide", "title": "Claude Protect: 打开使用说明" }
+    ]
+  },
+  "scripts": { "test": "node --test ../tests/status.test.js", "check": "node --check extension.js" }
+}
